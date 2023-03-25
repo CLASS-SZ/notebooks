@@ -1,6 +1,8 @@
 # notebooks
 Tutorial notebooks for the class_sz code.
 
+The code is at https://github.com/CLASS-SZ/class_sz
+
 
 Contributors:
 
