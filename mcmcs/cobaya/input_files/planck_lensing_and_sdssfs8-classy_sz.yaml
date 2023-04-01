@@ -7,14 +7,6 @@ likelihood:
     path: /path/to/cobaya_packages/data/
 
 theory:
-  # cosmopower:
-  #   path_to_trained_models: /path/to/trained_models/
-  #   DAZ_emulator_name: growth-and-distances/DAZ_v1
-  #   HZ_emulator_name: growth-and-distances/HZ_v1
-  #   DER_emulator_name: derived-parameters/DER_v1
-  #   S8Z_emulator_name: growth-and-distances/S8Z_v1
-  #   PP_emulator_name: PP/PP_v1
-  #   lensing_lkl : Planck
 
 params:
   omega_b:

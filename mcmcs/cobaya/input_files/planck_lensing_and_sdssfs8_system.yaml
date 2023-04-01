@@ -1,0 +1,81 @@
+likelihood:
+  bao.sdss_dr12_consensus_full_shape:
+    path: /Users/boris/Work/CLASS-SZ/SO-SZ/cobaya_packages/data
+  planck_2018_lensing.CMBMarged:
+    path: /Users/boris/Work/CLASS-SZ/SO-SZ/cobaya_packages/data/planck_supp_data_and_covmats
+output: /Users/boris/Work/CLASS-SZ/SO-SZ/class_sz_organization/notebooks/mcmcs/cobaya/notebooks/../chains/planck_lensing_and_sdssfs8
+params:
+  H0:
+    latex: H0
+    prior:
+      max: 99.0
+      min: 40.0
+    proposal: 17.146899
+    ref:
+      dist: norm
+      loc: 69.351243
+      scale: 17.146899
+  logA:
+    latex: ln10^{10}A_s
+    prior:
+      max: 3.5
+      min: 2.5
+    proposal: 0.12892144
+    ref:
+      dist: norm
+      loc: 2.9939341
+      scale: 0.12892144
+  n_s:
+    latex: n_s
+    prior:
+      max: 1.0492
+      min: 0.8812
+    proposal: 0.019465327
+    ref:
+      dist: norm
+      loc: 0.95989286
+      scale: 0.019465327
+  omega_b:
+    latex: omega_b
+    prior:
+      max: 0.02533
+      min: 0.01933
+    proposal: 0.00088253849
+    ref:
+      dist: norm
+      loc: 0.022211104
+      scale: 0.00088253849
+  omega_cdm:
+    latex: omega_cdm
+    prior:
+      max: 0.2
+      min: 0.08
+    proposal: 0.012255042
+    ref:
+      dist: norm
+      loc: 0.12590565
+      scale: 0.012255042
+  tau_reio: 0.055
+prior:
+  ns_prior: 'lambda n_s: stats.norm.logpdf(n_s, loc=0.96, scale=0.02)'
+  omb_prior: 'lambda omega_b: stats.norm.logpdf(omega_b, loc=0.0222, scale=0.0005)'
+sampler:
+  mcmc:
+    Rminus1_stop: 0.1
+    burn_in: 50
+    covmat: /Users/boris/Work/CLASS-SZ/SO-SZ/class_sz_organization/notebooks/mcmcs/cobaya/notebooks/../chains/../covmats/planck_lensing_and_sdssfs8.covmat
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 30.0
+    learn_proposal_Rminus1_max_early: 80.0
+    max_tries: 5000
+    proposal_scale: 1.9
+theory:
+  classy_szfast.classy_sz.classy_sz:
+    extra_args:
+      ndim_redshifts: 4
+      output: tCl,lCl,pCl
+      skip_background_and_thermo: 1
+      skip_pk: 1
+    lensing_lkl: Planck
+    stop_at_error: true
+    use_class_sz_fast_mode: 1
