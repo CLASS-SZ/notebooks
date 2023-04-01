@@ -6,7 +6,7 @@ likelihood:
 output: /Users/boris/Work/CLASS-SZ/SO-SZ/class_sz_organization/notebooks/mcmcs/cobaya/notebooks/../chains/planck_lensing_and_sdssfs8
 params:
   H0:
-    latex: H0
+    latex: H_0
     prior:
       max: 99.0
       min: 40.0
@@ -36,7 +36,7 @@ params:
       loc: 0.95989286
       scale: 0.019465327
   omega_b:
-    latex: omega_b
+    latex: \omega_\mathrm{b}
     prior:
       max: 0.02533
       min: 0.01933
@@ -46,7 +46,7 @@ params:
       loc: 0.022211104
       scale: 0.00088253849
   omega_cdm:
-    latex: omega_cdm
+    latex: \omega_\mathrm{cdm}
     prior:
       max: 0.2
       min: 0.08

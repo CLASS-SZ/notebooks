@@ -18,7 +18,7 @@ params:
       loc: 2.2211104E-02
       scale: 8.8253849E-04
     proposal: 8.8253849E-04
-    latex: omega_b
+    latex: \omega_\mathrm{b}
   omega_cdm:
     prior:
       min: 0.08
@@ -28,7 +28,7 @@ params:
       loc: 1.2590565E-01
       scale: 1.2255042E-02
     proposal: 1.2255042E-02
-    latex: omega_cdm
+    latex: \omega_\mathrm{cdm}
   H0:
     prior:
       min: 40.
@@ -38,7 +38,7 @@ params:
       loc: 6.9351243E+01
       scale: 1.7146899E+01
     proposal: 1.7146899E+01
-    latex: H0
+    latex: H_0
   n_s:
     prior:
       min: 0.8812 # cp prior
