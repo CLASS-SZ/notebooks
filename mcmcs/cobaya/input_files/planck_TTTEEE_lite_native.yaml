@@ -1,20 +1,10 @@
-output: planck_lensing_and_sdssfs8
+output: plikHMTTTEE
 
 likelihood:
-  planck_2018_lensing.CMBMarged:
+  planck_2018_highl_plik.TTTEEE_lite_native:
     path: /path/to/cobaya_packages/data/planck_supp_data_and_covmats
-  bao.mock_boss:
-    # path: /path/to/cobaya_packages/data/
 
 theory:
-  # cosmopower:
-  #   path_to_trained_models: /path/to/trained_models/
-  #   DAZ_emulator_name: growth-and-distances/DAZ_v1
-  #   HZ_emulator_name: growth-and-distances/HZ_v1
-  #   DER_emulator_name: derived-parameters/DER_v1
-  #   S8Z_emulator_name: growth-and-distances/S8Z_v1
-  #   PP_emulator_name: PP/PP_v1
-  #   lensing_lkl : Planck
 
 params:
   omega_b:
@@ -26,7 +16,7 @@ params:
       loc: 2.2211104E-02
       scale: 8.8253849E-04
     proposal: 8.8253849E-04
-    latex: omega_b
+    latex: \omega_\mathrm{b}
   omega_cdm:
     prior:
       min: 0.08
@@ -36,7 +26,7 @@ params:
       loc: 1.2590565E-01
       scale: 1.2255042E-02
     proposal: 1.2255042E-02
-    latex: omega_cdm
+    latex: \omega_\mathrm{cdm}
   H0:
     prior:
       min: 40.
@@ -44,9 +34,9 @@ params:
     ref:
       dist: norm
       loc: 6.9351243E+01
-      scale: 1.7146899E+01
-    proposal: 1.7146899E+01
-    latex: H0
+      scale: 2.
+    proposal: 2.
+    latex: H_0
   n_s:
     prior:
       min: 0.8812 # cp prior
@@ -69,25 +59,21 @@ params:
     proposal: 1.2892144E-01
     latex: ln10^{10}A_s
 
-  tau_reio: 0.055
-    # prior:
-    #   dist: norm
-    #   loc: 0.065
-    #   scale: 0.015
-    # ref:
-    #   dist: norm
-    #   loc: 0.065
-    #   scale: 0.002
-    # proposal: 0.002
-    # latex: \tau_\mathrm{reio}
-prior:
-  ns_prior: "lambda n_s: stats.norm.logpdf(n_s, loc=0.96, scale=0.02)"
-  omb_prior: "lambda omega_b: stats.norm.logpdf(omega_b, loc=0.0222, scale=0.0005)"
+  tau_reio:
+    prior:
+      min: 0.02
+      max: 0.12
+    ref:
+      dist: norm
+      loc: 0.055
+      scale: 0.006
+    proposal: 0.003
+    latex: \tau_\mathrm{reio}
 
 sampler:
   #settings for covmat see https://cobaya.readthedocs.io/en/latest/sampler_mcmc.html
   mcmc:
-    covmat: planck_lensing_and_sdssfs8.covmat
+    covmat: plikHMTTTEE.covmat
     #covmat: auto
     Rminus1_stop: 0.01
     #drag: true #only possible when doing a multi-likelihood run with different speed for each likelihood

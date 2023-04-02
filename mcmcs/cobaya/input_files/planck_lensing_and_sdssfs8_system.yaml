@@ -10,11 +10,11 @@ params:
     prior:
       max: 99.0
       min: 40.0
-    proposal: 17.146899
+    proposal: 12.0
     ref:
       dist: norm
       loc: 69.351243
-      scale: 17.146899
+      scale: 12.0
   logA:
     latex: ln10^{10}A_s
     prior:
@@ -61,7 +61,7 @@ prior:
   omb_prior: 'lambda omega_b: stats.norm.logpdf(omega_b, loc=0.0222, scale=0.0005)'
 sampler:
   mcmc:
-    Rminus1_stop: 0.1
+    Rminus1_stop: 0.5
     burn_in: 50
     covmat: /Users/boris/Work/CLASS-SZ/SO-SZ/class_sz_organization/notebooks/mcmcs/cobaya/notebooks/../chains/../covmats/planck_lensing_and_sdssfs8.covmat
     learn_proposal: true

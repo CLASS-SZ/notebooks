@@ -1,10 +1,36 @@
-output: planck_lensing_and_sdssfs8
+output: desy1_baos
 
 likelihood:
-  planck_2018_lensing.CMBMarged:
-    path: /path/to/cobaya_packages/data/planck_supp_data_and_covmats
-  bao.sdss_dr12_consensus_full_shape:
+  des_y1.joint:
+    stop_at_error: True
+    # Path to the installation folder
+    path: /path/to/cobaya_packages/data/des_data
+    # .dataset (or original .fits file) to read
+    dataset_file: DES_1YR_final.dataset
+    # Parameters to override in .dataset file
+    dataset_params:
+      used_data_types: wtheta gammat xip xim
+    # Accuracy parameter
+    acc: 1
+    # Internal l_max used (If null/None, 5e4*acc used)
+    l_max: null
+    # Use hankel module for Bessel transforms. For checking.
+    use_hankel: False
+    # Use Weyl potential
+    use_Weyl: False
+    # Approximate bessel integral as binned smooth C_L
+    # against integrals of bessel in each bin.
+    binned_bessels: True
+    # Aliases for automatic covariance matrix
+    aliases: [DES]
+    # Speed in evaluations/second
+    speed: 20
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
     path: /path/to/cobaya_packages/data/
+  bao.sdss_dr12_consensus_bao:
+    path: /path/to/cobaya_packages/data/
+
 
 theory:
 
@@ -31,13 +57,13 @@ params:
     latex: \omega_\mathrm{cdm}
   H0:
     prior:
-      min: 40.
-      max: 99.
+      min: 50.
+      max: 90.
     ref:
       dist: norm
       loc: 6.9351243E+01
-      scale: 12.
-    proposal: 12.
+      scale: 2.
+    proposal: 2.
     latex: H_0
   n_s:
     prior:
@@ -63,23 +89,19 @@ params:
 
   tau_reio: 0.055
     # prior:
-    #   dist: norm
-    #   loc: 0.065
-    #   scale: 0.015
+    #   min: 0.02
+    #   max: 0.12
     # ref:
     #   dist: norm
-    #   loc: 0.065
-    #   scale: 0.002
-    # proposal: 0.002
+    #   loc: 0.055
+    #   scale: 0.006
+    # proposal: 0.003
     # latex: \tau_\mathrm{reio}
-prior:
-  ns_prior: "lambda n_s: stats.norm.logpdf(n_s, loc=0.96, scale=0.02)"
-  omb_prior: "lambda omega_b: stats.norm.logpdf(omega_b, loc=0.0222, scale=0.0005)"
 
 sampler:
   #settings for covmat see https://cobaya.readthedocs.io/en/latest/sampler_mcmc.html
   mcmc:
-    covmat: planck_lensing_and_sdssfs8.covmat
+    covmat: desy1_joint.covmat
     #covmat: auto
     Rminus1_stop: 0.01
     #drag: true #only possible when doing a multi-likelihood run with different speed for each likelihood
@@ -89,5 +111,10 @@ sampler:
     learn_proposal: true
     learn_proposal_Rminus1_max: 30.
     learn_proposal_Rminus1_max_early: 80.
+
+prior:
+  ns_prior: "lambda n_s: stats.norm.logpdf(n_s, loc=0.96, scale=0.02)"
+  omb_prior: "lambda omega_b: stats.norm.logpdf(omega_b, loc=0.0222, scale=0.0005)"
+
 # debug: True
 # timing: true

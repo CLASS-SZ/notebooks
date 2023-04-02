@@ -3,3 +3,4 @@ figures
 .ipynb_ch*
 .DS_Store
 mcmcs/cobaya/chains/*
+*_system.yaml
