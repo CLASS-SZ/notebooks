@@ -4,3 +4,4 @@ figures
 .DS_Store
 mcmcs/cobaya/chains/*
 *_system.yaml
+class_sz_crashtests.ipynb
