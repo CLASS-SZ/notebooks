@@ -1,0 +1,99 @@
+output: plikHMTTTEE
+
+likelihood:
+  pyactlike.ACTPol_lite_DR4:
+    stop_at_error: True
+
+theory:
+
+params:
+  omega_b:
+    prior:
+      min: 0.01933 # cp prior
+      max: 0.02533 # cp prior
+    ref:
+      dist: norm
+      loc: 2.2211104E-02
+      scale: 8.8253849E-04
+    proposal: 8.8253849E-04
+    latex: \omega_\mathrm{b}
+  omega_cdm:
+    prior:
+      min: 0.08
+      max: 0.20
+    ref:
+      dist: norm
+      loc: 1.2590565E-01
+      scale: 1.2255042E-02
+    proposal: 1.2255042E-02
+    latex: \omega_\mathrm{cdm}
+  H0:
+    prior:
+      min: 40.
+      max: 99.
+    ref:
+      dist: norm
+      loc: 6.9351243E+01
+      scale: 2.
+    proposal: 2.
+    latex: H_0
+  n_s:
+    prior:
+      min: 0.8812 # cp prior
+      max: 1.0492 # cp prior
+    ref:
+      dist: norm
+      loc: 9.5989286E-01
+      scale: 1.9465327E-02
+    proposal: 1.9465327E-02
+    latex: n_s
+
+  logA:
+    prior:
+      min: 2.5
+      max: 3.5
+    ref:
+      dist: norm
+      loc: 2.9939341E+00
+      scale: 1.2892144E-01
+    proposal: 1.2892144E-01
+    latex: ln10^{10}A_s
+
+  tau_reio:
+    prior:
+      dist: norm
+      loc: 0.065
+      scale: 0.015
+    ref:
+      dist: norm
+      loc: 0.065
+      scale: 0.002
+    proposal: 0.002
+    latex: \tau_\mathrm{reio}
+
+
+  # pyactlike param
+  yp2:
+    prior:
+      min: 0.9
+      max: 1.1
+    ref:
+      dist: norm
+      loc: 1.01
+      scale: 0.005
+
+sampler:
+  #settings for covmat see https://cobaya.readthedocs.io/en/latest/sampler_mcmc.html
+  mcmc:
+    covmat: CLASS2p8_ACTPol_lite_DR4_leakfix_yp2_baseLCDM_taup_hip_R0p01.covmat
+    #covmat: auto
+    Rminus1_stop: 0.01
+    #drag: true #only possible when doing a multi-likelihood run with different speed for each likelihood
+    proposal_scale: 1.9
+    burn_in: 50
+    max_tries: 5000
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 30.
+    learn_proposal_Rminus1_max_early: 80.
+# debug: True
+# timing: true
